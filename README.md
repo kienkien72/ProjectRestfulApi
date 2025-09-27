@@ -33,6 +33,7 @@ Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, 
 - Tập trung vào các chức năng liên quan đến bảo mật và phân quyền
 
 ## Hướng dẫn chạy dự án
-1. Clone repository:
-```bash
-git clone https://github.com/kienkien72/ProjectRestfulApi.git
+1. Clone repo: `git clone https://github.com/kienkien72/ProjectRestfulApi.git`
+2. Chạy backend: `./mvnw spring-boot:run`
+3. Chạy frontend: `npm install && npm start`
+4. Truy cập: `http://localhost:3000`
