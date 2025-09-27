@@ -1,0 +1,116 @@
+# 1. Dùng để đẩy lên docker hub 
+
+# services:
+#   mysql:
+#     image: mysql:8.0
+#     container_name: mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: "123456"
+#       MYSQL_DATABASE: manage_student
+#     ports:
+#       - "3307:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+#     networks:
+#       - app-network
+#     healthcheck:
+#       # ← THÊM HEALTH CHECK
+#       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p123456" ]
+#       timeout: 20s
+#       retries: 10
+#       start_period: 40s
+#     restart: unless-stopped
+
+#   backend:
+#     build: ./backend
+#     container_name: backend
+#     environment:
+#       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/manage_student
+#       SPRING_DATASOURCE_USERNAME: root
+#       SPRING_DATASOURCE_PASSWORD: 123456
+#     depends_on:
+#       mysql:
+#         condition: service_healthy
+#     ports:
+#       - "8080:8080"
+#     networks:
+#       - app-network
+#     restart: on-failure
+
+#   frontend:
+#     build: ./project
+#     container_name: frontend
+#     depends_on:
+#       backend:
+#         condition: service_started
+#     ports:
+#       - "3000:80"
+#     networks:
+#       - app-network
+
+# networks:
+#   app-network:
+#     driver: bridge
+
+# volumes:
+#   mysql_data:
+# Bản thứ nhất: Được thiết kế để xây dựng các image Docker từ mã nguồn cục bộ của bạn.
+
+# Sử dụng build: ./backend và build: ./project để tạo image backend và frontend từ Dockerfile trong các thư mục tương ứng.
+
+# Điều này phù hợp cho giai đoạn phát triển cục bộ (local development), khi bạn thường xuyên thay đổi code và cần build lại image để kiểm tra.
+
+# Bản thứ hai: Được thiết kế để sử dụng các image Docker đã có sẵn từ một Docker registry (cụ thể là Docker Hub).
+
+# Sử dụng image: kienkien7204/projectwasios-backend:latest và các image tương tự.
+
+# Điều này phù hợp cho giai đoạn triển khai (deployment) hoặc khi chia sẻ ứng dụng, vì bạn không cần phải có mã nguồn để chạy ứng dụng, chỉ cần kéo (pull) image từ registry.
+
+#2. Bản sửa để kết nối vs terminus => Lấy image từ docker hub
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: manage_student
+    ports:
+      - "3307:3306"
+    networks:
+      - app-network
+    volumes:
+      - mysql-data:/var/lib/mysql # Lưu dữ liệu MySQL
+
+  backend:
+    image: kienkien7204/backend:latest
+    container_name: backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/manage_student
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    restart: on-failure
+
+  frontend:
+    image: kienkien7204/frontend:latest
+    container_name: frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
