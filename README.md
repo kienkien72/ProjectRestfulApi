@@ -10,15 +10,11 @@ Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, 
 - Giao diện React kết nối trực tiếp với RESTful API qua Fetch API
 - Triển khai và vận hành trên Cloud với Docker & AWS
 
----
-
 ## Công nghệ sử dụng
 - **Backend:** Java, Spring Boot, Spring Security, RESTful API  
 - **Frontend:** React, BootstrapReact, Fetch API  
 - **DevOps & Cloud:** Docker, Docker Hub, AWS  
 - **Kiểm thử:** Postman  
-
----
 
 ## Thành tựu nổi bật
 
@@ -37,8 +33,6 @@ Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, 
 ### 4. Kiểm thử
 - Sử dụng Postman để kiểm thử và xác thực tính ổn định của các endpoints
 - Tập trung vào các chức năng liên quan đến bảo mật và phân quyền
-
----
 
 ## Hướng dẫn chạy dự án
 1. Clone repository:
