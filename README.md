@@ -37,3 +37,4 @@ Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, 
 2. Chạy backend: `./mvnw spring-boot:run`
 3. Chạy frontend: `npm install && npm start`
 4. Truy cập: `http://localhost:3000`
+5. Truy cập public : `http://13.237.152.107:3000` (vẫn đang fix lỗi)
