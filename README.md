@@ -1,5 +1,4 @@
 # Hệ thống Quản lý Dữ liệu & Phân quyền
-
 ## Mô tả dự án
 Đây là một dự án xây dựng **hệ thống quản lý dữ liệu và phân quyền** sử dụng kiến trúc hiện đại với Front-end và Back-end tách biệt.  
 Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, đảm bảo **hiệu suất cao, bảo mật và trải nghiệm người dùng tối ưu**.
@@ -17,7 +16,6 @@ Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, 
 - **Kiểm thử:** Postman  
 
 ## Thành tựu nổi bật
-
 ### 1. Triển khai Cloud & DevOps
 - Đóng gói Backend bằng Docker và đẩy lên Docker Hub
 - Triển khai ứng dụng trên AWS , tối ưu hóa quy trình vận hành (Operation)
@@ -37,4 +35,4 @@ Dự án được triển khai thành công trên nền tảng **Cloud (AWS)**, 
 ## Hướng dẫn chạy dự án
 1. Clone repository:
 ```bash
-git clone https://github.com/username/ProjectRestfulApi.git
+git clone https://github.com/kienkien72/ProjectRestfulApi.git
